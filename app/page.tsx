@@ -24,7 +24,6 @@ export default function Home() {
           numberOfMonths={2}
           disabled={disabledDays}
           selected={selected}
-          onSelect={setSelected}
         />
       )}
       <div className={styles.shape}>
