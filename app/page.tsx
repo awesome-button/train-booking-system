@@ -17,7 +17,13 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      <input type="date" onClick={() => setShowDatePicker(!showDatePicker)} />
+      <input
+        type="date"
+        onClick={(e) => {
+          (e) => e.preventDefault();
+          setShowDatePicker(!showDatePicker);
+        }}
+      />
       {showDatePicker && (
         <DayPicker
           mode="single"
@@ -26,9 +32,6 @@ export default function Home() {
           selected={selected}
         />
       )}
-      <div className={styles.shape}>
-        <p>Get started by editing</p>
-      </div>
     </main>
   );
 }
