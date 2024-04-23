@@ -30,6 +30,7 @@ export default function Home() {
           numberOfMonths={2}
           disabled={disabledDays}
           selected={selected}
+          styles={{ months: { flexFlow: "column", alignItems: "flex-start" } }}
         />
       )}
     </main>
