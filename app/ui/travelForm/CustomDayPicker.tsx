@@ -8,11 +8,9 @@ import {
   SelectRangeEventHandler,
   SelectSingleEventHandler
 } from "react-day-picker";
-import DateInput from "../primitives/DateInput";
 import { startOfMonth } from "date-fns/startOfMonth";
 import { startOfYesterday } from "date-fns/startOfYesterday";
 import DayPickerFooter from "./DayPickerFooter";
-import { toDate } from "date-fns";
 import { PickerType } from "@/app/lib/types";
 
 const disabledDays = [
@@ -23,24 +21,24 @@ type CustomDayPickerType = {
   pickerType: PickerType;
   handleSingleTripSelect: SelectSingleEventHandler;
   handleRangeSelect: SelectRangeEventHandler;
-  fromDateValue: string;
-  toDateValue: string;
-  fromDate: Date;
-  toDate: Date;
+  departureDateValue: string;
+  returnDateValue: string;
+  departureDate: Date;
+  returnDate: Date;
 };
 
 const CustomDayPicker = ({
   pickerType,
   handleSingleTripSelect,
   handleRangeSelect,
-  fromDateValue,
-  toDateValue,
-  fromDate,
-  toDate
+  departureDateValue,
+  returnDateValue,
+  departureDate,
+  returnDate
 }: CustomDayPickerType) => {
   const selectedRange = useMemo(() => {
-    return { from: fromDate, to: toDate };
-  }, [fromDate, toDate]);
+    return { from: departureDate, to: returnDate };
+  }, [departureDate, returnDate]);
 
   const commonProps = {
     fromMonth: new Date(),
@@ -52,18 +50,18 @@ const CustomDayPicker = ({
     ...commonProps,
     mode: "single",
     onSelect: handleSingleTripSelect,
-    selected: fromDate,
+    selected: departureDate,
     footer: (
       <DayPickerFooter
-        fromDate={{
+        departureDate={{
           disabled: false,
           placeholder: "From Date",
-          value: fromDateValue
+          value: departureDateValue
         }}
-        toDate={{
+        returnDate={{
           disabled: true,
           placeholder: "To Date",
-          value: toDateValue
+          value: returnDateValue
         }}
       />
     )
@@ -76,15 +74,15 @@ const CustomDayPicker = ({
     selected: selectedRange,
     footer: (
       <DayPickerFooter
-        fromDate={{
+        departureDate={{
           disabled: false,
           placeholder: "From Date",
-          value: fromDateValue
+          value: departureDateValue
         }}
-        toDate={{
+        returnDate={{
           disabled: false,
           placeholder: "From Date",
-          value: toDateValue
+          value: returnDateValue
         }}
       />
     )

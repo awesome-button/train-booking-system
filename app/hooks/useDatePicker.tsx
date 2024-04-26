@@ -9,51 +9,51 @@ import {
 } from "react-day-picker";
 
 const useDatePicker = (tripType: TripType) => {
-  const [fromDate, setFromDate] = useState<Date>(new Date());
-  const [toDate, setToDate] = useState<Date>(
+  const [departureDate, setDepartureDate] = useState<Date>(new Date());
+  const [returnDate, setReturnDate] = useState<Date>(
     tripType === TripType.RETURN ? addWeeks(new Date(), 1) : null
   );
 
-  const fromDateValue = useMemo(
-    () => (fromDate ? format(fromDate, "yyyy-MM-dd") : ""),
-    [fromDate]
+  const departureDateValue = useMemo(
+    () => (departureDate ? format(departureDate, "yyyy-MM-dd") : ""),
+    [departureDate]
   );
-  const toDateValue = useMemo(
-    () => (toDate ? format(toDate, "yyyy-MM-dd") : ""),
-    [toDate]
+  const returnDateValue = useMemo(
+    () => (returnDate ? format(returnDate, "yyyy-MM-dd") : ""),
+    [returnDate]
   );
 
   const handleSingleTripSelect: SelectSingleEventHandler = (date: Date) => {
-    setFromDate(date);
+    setDepartureDate(date);
   };
 
   const handleRangeSelect: SelectRangeEventHandler = (
     range: DateRange | undefined
   ) => {
     if (range?.from) {
-      setFromDate(range.from);
+      setDepartureDate(range.from);
     } else {
-      setFromDate(null);
+      setDepartureDate(null);
     }
     if (range?.to) {
-      setToDate(range.to);
+      setReturnDate(range.to);
     } else {
-      setToDate(null);
+      setReturnDate(null);
     }
   };
 
-  const clearToDate = () => {
-    setToDate(null);
+  const clearReturnDate = () => {
+    setReturnDate(null);
   };
 
   return {
     handleSingleTripSelect,
     handleRangeSelect,
-    fromDateValue,
-    toDateValue,
-    fromDate,
-    toDate,
-    clearToDate
+    departureDateValue,
+    returnDateValue,
+    departureDate,
+    returnDate,
+    clearReturnDate
   };
 };
 
