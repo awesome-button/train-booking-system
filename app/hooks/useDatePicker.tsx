@@ -1,3 +1,4 @@
+import { TripType } from "@/app/lib/types";
 import { addWeeks } from "date-fns";
 import { format } from "date-fns/format";
 import { useMemo, useState } from "react";
@@ -7,14 +8,11 @@ import {
   SelectSingleEventHandler
 } from "react-day-picker";
 
-export enum TripType {
-  ONE_WAY = "ONE_WAY",
-  RETURN = "RETURN"
-}
-
 const useDatePicker = (tripType: TripType) => {
   const [fromDate, setFromDate] = useState<Date>(new Date());
-  const [toDate, setToDate] = useState<Date>(addWeeks(new Date(), 1));
+  const [toDate, setToDate] = useState<Date>(
+    tripType === TripType.RETURN ? addWeeks(new Date(), 1) : null
+  );
 
   const fromDateValue = useMemo(
     () => (fromDate ? format(fromDate, "yyyy-MM-dd") : ""),
@@ -44,13 +42,18 @@ const useDatePicker = (tripType: TripType) => {
     }
   };
 
+  const clearToDate = () => {
+    setToDate(null);
+  };
+
   return {
     handleSingleTripSelect,
     handleRangeSelect,
     fromDateValue,
     toDateValue,
     fromDate,
-    toDate
+    toDate,
+    clearToDate
   };
 };
 
