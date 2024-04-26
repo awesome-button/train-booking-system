@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import useDatePicker from "../ui/components/useDatePicker";
-import CustomDayPicker, { PickerType } from "../ui/components/CustomDayPicker";
+import useDatePicker from "../../hooks/useDatePicker";
+import CustomDayPicker from "./CustomDayPicker";
+import { PickerType } from "../../lib/types";
 
 export enum TripType {
   ONE_WAY = "ONE_WAY",
@@ -16,12 +17,13 @@ const TravelForm = () => {
     fromDateValue,
     toDateValue,
     fromDate,
-    toDate
+    toDate,
+    clearToDate
   } = useDatePicker(tripType);
 
   const changeTripType = (e) => {
     setTripType(e.target.value);
-    // if (e.target.value === TripType.ONE_WAY) setToDate(null);
+    if (e.target.value === TripType.ONE_WAY) clearToDate();
   };
 
   const handleSubmit = (e) => {

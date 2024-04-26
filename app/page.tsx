@@ -3,7 +3,7 @@
 import React from "react";
 import "react-day-picker/dist/style.css";
 
-import TravelForm from "./components/TravelForm";
+import TravelForm from "./ui/travelForm/TravelForm";
 
 export default function Home() {
   return (
