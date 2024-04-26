@@ -2,23 +2,23 @@ import React from "react";
 import DateInput from "../primitives/DateInput";
 
 type DayPickerFooter = {
-  fromDate: { value: string; disabled: boolean; placeholder: string };
-  toDate: { value: string; disabled: boolean; placeholder: string };
+  departureDate: { value: string; disabled: boolean; placeholder: string };
+  returnDate: { value: string; disabled: boolean; placeholder: string };
 };
 
-const DayPickerFooter = ({ fromDate, toDate }: DayPickerFooter) => {
+const DayPickerFooter = ({ departureDate, returnDate }: DayPickerFooter) => {
   return (
     <div>
       <DateInput
-        disabled={fromDate.disabled}
-        placeholder={fromDate.placeholder}
-        value={fromDate.value}
+        disabled={departureDate.disabled}
+        placeholder={departureDate.placeholder}
+        value={departureDate.value}
       />
       {" – "}
       <DateInput
-        disabled={toDate.disabled}
-        placeholder={toDate.placeholder}
-        value={toDate.value}
+        disabled={returnDate.disabled}
+        placeholder={returnDate.placeholder}
+        value={returnDate.value}
       />
     </div>
   );
