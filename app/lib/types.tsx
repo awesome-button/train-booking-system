@@ -8,7 +8,7 @@ export enum PickerType {
   RANGE = "RANGE"
 }
 
-// util functions types
+// helpers functions types
 
 type InputValidationResult = Promise<{
   valid: boolean;
