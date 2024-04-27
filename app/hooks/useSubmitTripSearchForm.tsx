@@ -5,18 +5,21 @@ type TripSearchFormSubmitData = {
   tripType: TripType;
   departureDate: string;
   returnDate: string;
+  route: { destination: string; origin: string };
 };
 
 const useSubmitTripSearchForm = () => {
   const handleSubmitForm = ({
     tripType,
     departureDate,
-    returnDate
+    returnDate,
+    route: { destination, origin }
   }: TripSearchFormSubmitData) => {
     const tripData = {
       tripType,
       departureDate,
-      returnDate
+      returnDate,
+      route: { destination, origin }
     };
     console.log("Submitting the following data to the server:");
     console.log(tripData);

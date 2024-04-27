@@ -1,5 +1,5 @@
+import { TripType } from "@/app/lib/types";
 import React from "react";
-import { TripType } from "./TripSeacrhForm";
 
 const TripTypeSelect = ({ onChange }: { onChange: (e: any) => void }) => {
   return (

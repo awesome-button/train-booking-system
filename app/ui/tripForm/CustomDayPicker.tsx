@@ -13,6 +13,13 @@ import { startOfYesterday } from "date-fns/startOfYesterday";
 import DayPickerFooter from "./DayPickerFooter";
 import { PickerType } from "@/app/lib/types";
 
+type TripDates = {
+  departureDateValue: string;
+  returnDateValue: string;
+  departureDate: Date;
+  returnDate: Date;
+};
+
 const disabledDays = [
   { from: startOfMonth(new Date()), to: startOfYesterday() }
 ];
@@ -21,21 +28,20 @@ type CustomDayPickerType = {
   pickerType: PickerType;
   handleSingleTripSelect: SelectSingleEventHandler;
   handleRangeSelect: SelectRangeEventHandler;
-  departureDateValue: string;
-  returnDateValue: string;
-  departureDate: Date;
-  returnDate: Date;
+  tripDates: TripDates;
+  areValidTripDates: boolean;
+  datesValidationError: string;
 };
 
 const CustomDayPicker = ({
   pickerType,
   handleSingleTripSelect,
   handleRangeSelect,
-  departureDateValue,
-  returnDateValue,
-  departureDate,
-  returnDate
+  tripDates,
+  datesValidationError
 }: CustomDayPickerType) => {
+  const { departureDateValue, returnDateValue, departureDate, returnDate } =
+    tripDates;
   const selectedRange = useMemo(() => {
     return { from: departureDate, to: returnDate };
   }, [departureDate, returnDate]);
@@ -88,10 +94,15 @@ const CustomDayPicker = ({
     )
   };
 
-  return pickerType === PickerType.SINGLE ? (
-    <DayPicker {...singlePickerProps} />
-  ) : (
-    <DayPicker {...rangePickerProps} />
+  return (
+    <>
+      {pickerType === PickerType.SINGLE ? (
+        <DayPicker {...singlePickerProps} />
+      ) : (
+        <DayPicker {...rangePickerProps} />
+      )}{" "}
+      <p style={{ color: "red" }}>{datesValidationError}</p>
+    </>
   );
 };
 
