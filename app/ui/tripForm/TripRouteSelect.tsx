@@ -4,12 +4,14 @@ type TripRouteSelect = {
   handleOrigin: (origin: string) => void;
   handleDestination: (destination: string) => void;
   route: { origin: string; destination: string };
+  routeValidationError: string;
 };
 
 const TripRouteSelect = ({
   handleOrigin,
   handleDestination,
-  route
+  route,
+  routeValidationError
 }: TripRouteSelect) => {
   return (
     <div>
@@ -27,6 +29,7 @@ const TripRouteSelect = ({
         value={route.destination}
         onChange={(e) => handleDestination(e.target.value)}
       />
+      <p>{routeValidationError}</p>
     </div>
   );
 };
