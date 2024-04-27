@@ -7,7 +7,7 @@ import {
   SelectRangeEventHandler,
   SelectSingleEventHandler
 } from "react-day-picker";
-import { checkIfValidTripDates } from "../lib/utils";
+import { checkIfValidTripDates } from "../lib/helpers";
 
 const useDatePicker = (tripType: TripType) => {
   const [departureDate, setDepartureDate] = useState<Date>(new Date());
