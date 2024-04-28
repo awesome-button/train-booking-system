@@ -46,6 +46,7 @@ const useDatePicker = (tripType: TripType) => {
 
   const clearReturnDate = () => {
     setReturnDate(null);
+    setValidationError("");
   };
 
   const areValidTripDates = async () => {

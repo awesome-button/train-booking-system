@@ -73,13 +73,23 @@ const TripSearchForm = () => {
 
   console.log("route error", routeValidationError);
   return (
-    <form method="post" onSubmit={handleSubmit}>
+    <form
+      className="max-w-md mx-auto grid gap-2"
+      method="post"
+      onSubmit={handleSubmit}
+    >
       <TripTypeSelect onChange={changeTripType} />
       <TripRouteSelect {...travelRouteSelectProps} />
       <CustomDayPicker {...customerDayPickerProps} />
 
-      <div>
-        <input type="submit" value="Search" disabled={!isValidTripRoute} />
+      <div className="w-full">
+        <input
+          className="text-white w-full bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 mt-6 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800
+        disabled:bg-blue-400 disabled:dark:bg-blue-500 disabled:cursor-not-allowed"
+          type="submit"
+          value="Search"
+          disabled={!isValidTripRoute}
+        />
       </div>
     </form>
   );

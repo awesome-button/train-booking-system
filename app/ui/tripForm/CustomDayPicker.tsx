@@ -49,7 +49,8 @@ const CustomDayPicker = ({
   const commonProps = {
     fromMonth: new Date(),
     toMonth: addMonths(new Date(), 12),
-    disabled: disabledDays
+    disabled: disabledDays,
+    styles: { root: { marginBottom: 0 } }
   };
 
   const singlePickerProps: DayPickerSingleProps = {
@@ -87,7 +88,7 @@ const CustomDayPicker = ({
         }}
         returnDate={{
           disabled: false,
-          placeholder: "From Date",
+          placeholder: "To Date",
           value: returnDateValue
         }}
       />
@@ -95,14 +96,16 @@ const CustomDayPicker = ({
   };
 
   return (
-    <>
+    <div className="grid grid-gap-2">
       {pickerType === PickerType.SINGLE ? (
         <DayPicker {...singlePickerProps} />
       ) : (
         <DayPicker {...rangePickerProps} />
-      )}{" "}
-      <p style={{ color: "red" }}>{datesValidationError}</p>
-    </>
+      )}
+      <p className="text-red-500 text-sm px-6 absolute bottom-6">
+        {datesValidationError}
+      </p>
+    </div>
   );
 };
 

@@ -6,8 +6,10 @@ import TripSearchForm from "./ui/tripForm/TripSeacrhForm";
 
 export default function Home() {
   return (
-    <main style={{ display: "flex", flexDirection: "column" }}>
-      <p>Pick your destination and go!</p>
+    <main className="grid h-screen gap-4 place-content-center">
+      <p className="max-w-md mx-auto text-4xl font-bold">
+        Pick your destination<span>{<br />}</span> and go!
+      </p>
       <TripSearchForm />
     </main>
   );

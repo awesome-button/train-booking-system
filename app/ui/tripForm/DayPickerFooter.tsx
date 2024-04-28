@@ -8,13 +8,12 @@ type DayPickerFooter = {
 
 const DayPickerFooter = ({ departureDate, returnDate }: DayPickerFooter) => {
   return (
-    <div>
+    <div className="grid grid-cols-2 gap-2 mt-2">
       <DateInput
         disabled={departureDate.disabled}
         placeholder={departureDate.placeholder}
         value={departureDate.value}
       />
-      {" – "}
       <DateInput
         disabled={returnDate.disabled}
         placeholder={returnDate.placeholder}
