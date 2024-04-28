@@ -7,8 +7,6 @@ export const checkIfValidTripDates: ValidDatesFunction = async (
   departureDate,
   returnDate
 ) => {
-  console.log(departureDate, returnDate, tripType);
-
   const schema = yup.object().shape({
     tripType: yup.string(),
     departureDate: yup

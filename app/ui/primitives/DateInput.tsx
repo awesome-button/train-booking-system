@@ -21,7 +21,6 @@ const DateInput = ({
       placeholder={placeholder}
       value={value}
       onChange={onChange}
-      required
     />
   );
 };
