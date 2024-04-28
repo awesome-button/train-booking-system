@@ -2,7 +2,6 @@ import { addMonths } from "date-fns/addMonths";
 import React, { useMemo } from "react";
 import {
   DayPicker,
-  DayPickerBase,
   DayPickerRangeProps,
   DayPickerSingleProps,
   SelectRangeEventHandler,
@@ -96,13 +95,13 @@ const CustomDayPicker = ({
   };
 
   return (
-    <div className="grid grid-gap-2">
+    <div className="flex flex-col items-center">
       {pickerType === PickerType.SINGLE ? (
         <DayPicker {...singlePickerProps} />
       ) : (
         <DayPicker {...rangePickerProps} />
       )}
-      <p className="text-red-500 text-sm px-6 absolute bottom-6">
+      <p className="text-red-500 text-sm px-1 w-10/12">
         {datesValidationError}
       </p>
     </div>
