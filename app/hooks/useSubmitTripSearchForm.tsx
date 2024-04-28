@@ -23,7 +23,7 @@ const useSubmitTripSearchForm = () => {
     };
     console.log("Submitting the following data to the server:");
     console.log(tripData);
-    // error handling here
+
     return { isSearchSuccessful: true };
   };
 

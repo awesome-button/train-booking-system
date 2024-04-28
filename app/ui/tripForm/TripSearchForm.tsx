@@ -8,6 +8,8 @@ import useTripRoute from "@/app/hooks/useTripRoute";
 import useSubmitTripSearchForm from "@/app/hooks/useSubmitTripSearchForm";
 
 const TripSearchForm = () => {
+  const [tripType, setTripType] = useState<TripType>(TripType.ONE_WAY);
+
   const {
     route,
     handleOrigin,
@@ -15,8 +17,6 @@ const TripSearchForm = () => {
     isValidTripRoute,
     validationError: routeValidationError
   } = useTripRoute();
-
-  const [tripType, setTripType] = useState<TripType>(TripType.ONE_WAY);
 
   const {
     handleSingleTripSelect,
@@ -36,7 +36,7 @@ const TripSearchForm = () => {
 
   let formIsValid = false;
 
-  const customerDayPickerProps = {
+  const dayPickerProps = {
     pickerType:
       tripType === TripType.ONE_WAY ? PickerType.SINGLE : PickerType.RANGE,
     handleSingleTripSelect,
@@ -46,7 +46,7 @@ const TripSearchForm = () => {
     datesValidationError
   };
 
-  const travelRouteSelectProps = {
+  const routeSelectProps = {
     route,
     handleOrigin,
     handleDestination,
@@ -71,7 +71,6 @@ const TripSearchForm = () => {
     handleSubmitForm(data);
   };
 
-  console.log("route error", routeValidationError);
   return (
     <form
       className="max-w-md mx-auto grid gap-2"
@@ -79,8 +78,8 @@ const TripSearchForm = () => {
       onSubmit={handleSubmit}
     >
       <TripTypeSelect onChange={changeTripType} />
-      <TripRouteSelect {...travelRouteSelectProps} />
-      <CustomDayPicker {...customerDayPickerProps} />
+      <TripRouteSelect {...routeSelectProps} />
+      <CustomDayPicker {...dayPickerProps} />
 
       <div className="w-full">
         <input
