@@ -14,7 +14,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-The deployed application can also be found at [https://volvo-cars-assignment.vercel.app/](https://volvo-cars-assignment.vercel.app/).
+The deployed application can also be found at [https://train-booking-system-three.vercel.app/](https://train-booking-system-three.vercel.app/).
 
 ## Important things to know about this assignment
 
